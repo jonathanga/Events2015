@@ -28,6 +28,7 @@ public class DatosLocales  {
     public static final String KEY_PARTICIPANTS = "Participants_";
     public static final String KEY_LOCATION = "Location_";
     public static final String KEY_STATE = "State_";
+    public static final String KEY_HEADER = "Header_";
 
     private Context context;
     private SQLiteDatabase nBd;
@@ -36,13 +37,13 @@ public class DatosLocales  {
     private class BdHelper extends SQLiteOpenHelper{
 
         public BdHelper(Context context) {
-            super(context, BD_NAME, null, 1);
+            super(context, BD_NAME, null, 2);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TALBE " + T_EVENTO + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, " + KEY_START_TIME + " TEXT, " + KEY_DAY + " TEXT, " + KEY_PARTICIPANTS + " TEXT, " +
-            KEY_LOCATION + " TEXT, " + KEY_STATE + " INTEGER);");
+            KEY_LOCATION + " TEXT, " + KEY_STATE + " INTEGER, " + KEY_HEADER + " INTEGER);");
         }
 
         @Override
@@ -69,11 +70,17 @@ public class DatosLocales  {
                 int count = 0;
 
                 String datos;
+                String encabezado = "";
                 while ((datos = reader.readLine()) != null) {
 
                     String[] datosSeparados = datos.split(";");
                     if(count != 0){
-                        insertarDatos(datosSeparados);
+                        String nuevoEncabezado = datosSeparados[1];
+                        if(nuevoEncabezado.equals(encabezado)){
+                            insertarDatos(datosSeparados,0);
+                        }else {
+                            insertarDatos(datosSeparados, 1);
+                        }
                     }
                 }
 
@@ -89,7 +96,7 @@ public class DatosLocales  {
         nHelper.close();
     }
 
-    private void insertarDatos(String[] datosSeparados) {
+    private void insertarDatos(String[] datosSeparados, int header) {
         ContentValues cv = new ContentValues();
 
         cv.put(KEY_NAME, datosSeparados[1]);
@@ -97,7 +104,13 @@ public class DatosLocales  {
         cv.put(KEY_DAY, datosSeparados[3]);
         cv.put(KEY_PARTICIPANTS, datosSeparados[4]);
         cv.put(KEY_LOCATION, datosSeparados[5]);
+
+        // 0 No esta agendado
+        // 1 Si esta agendado
         cv.put(KEY_STATE, 0);
+        // 0 No es encabezado
+        // 1 Si es encabezado
+        cv.put(KEY_HEADER, header);
 
         nBd.insert(T_EVENTO, null, cv);
     }
