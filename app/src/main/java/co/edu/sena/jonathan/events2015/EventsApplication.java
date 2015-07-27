@@ -2,8 +2,10 @@ package co.edu.sena.jonathan.events2015;
 
 import android.app.Application;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import co.edu.sena.jonathan.events2015.data.Evento;
 import co.edu.sena.jonathan.events2015.data.ItemColor;
 
 /**
@@ -12,6 +14,7 @@ import co.edu.sena.jonathan.events2015.data.ItemColor;
 public class EventsApplication extends Application {
 
     private ArrayList<ItemColor> listaColores;
+    private ArrayList<Evento> listaEventos;
 
     public ArrayList<ItemColor> getListaColores() {
         return listaColores;
@@ -19,5 +22,13 @@ public class EventsApplication extends Application {
 
     public void setListaColores(ArrayList<ItemColor> listaColores) {
         this.listaColores = listaColores;
+    }
+
+    public ArrayList<Evento> getListaEventos(){
+        return listaEventos;
+    }
+
+    public void setListaEventos(ArrayList<Evento> listaEventos){
+        this.listaEventos=listaEventos;
     }
 }

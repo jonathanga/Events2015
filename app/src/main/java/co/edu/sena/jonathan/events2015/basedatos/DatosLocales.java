@@ -50,7 +50,7 @@ public class DatosLocales  {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TALBE " + T_EVENTO + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, " + KEY_START_TIME + " TEXT, " + KEY_DAY + " TEXT, " + KEY_PARTICIPANTS + " TEXT, " +
+            db.execSQL("CREATE TABLE " + T_EVENTO + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, " + KEY_START_TIME + " TEXT, " + KEY_DAY + " TEXT, " + KEY_PARTICIPANTS + " TEXT, " +
             KEY_LOCATION + " TEXT, " + KEY_STATE + " INTEGER, " + KEY_HEADER + " INTEGER);");
         }
 
