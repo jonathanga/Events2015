@@ -76,7 +76,7 @@ public class DatosLocales  {
 
                     String[] datosSeparados = datos.split(";");
                     if(count != 0){
-                        String nuevoEncabezado = datosSeparados[1];
+                        String nuevoEncabezado = datosSeparados[3];
                         if(nuevoEncabezado.equals(encabezado)){
                             insertarDatos(datosSeparados,0);
                         }else {
