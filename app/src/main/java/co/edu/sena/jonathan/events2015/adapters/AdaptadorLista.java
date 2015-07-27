@@ -18,6 +18,11 @@ public class AdaptadorLista extends BaseAdapter{
     Context context;
     private EventsApplication application;
 
+    public AdaptadorLista(Context context) {
+        this.context = context;
+        this.application = (EventsApplication) context;
+    }
+
     @Override
     public int getCount() {
         return application.getListaEventos().size();
@@ -62,15 +67,15 @@ public class AdaptadorLista extends BaseAdapter{
         holder.txtDia.setText(application.getListaEventos().get(i).getDia());
 
         if (application.getListaEventos().get(i).getEstado()==1){
-            holder.imgIr.setImageResource(R.drawable.ic_launcher);
+            holder.imgIr.setImageResource(R.drawable.logo_estd_1);
         }else {
-            //cambio de img
+            holder.imgIr.setImageResource(R.drawable.logo_estd_0);
         }
 
         if (application.getListaEventos().get(i).getEncabesado()==0){
-            //v.setBackgroundResource();
+            v.setBackgroundResource(R.color.fondo_lista_azul);
         }else{
-            //v.setBackgroundResource(); -->otro color
+            v.setBackgroundResource(R.color.fondo_lista_blanco);
         }
 
         return v;
