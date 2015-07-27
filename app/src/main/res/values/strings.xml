@@ -4,5 +4,8 @@
     <string name="app_name">Events2015</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_lista_eventos_dia">ListaEventosDia</string>
+    <string name="title_activity_detalle">DetalleActivity</string>
 
 </resources>
