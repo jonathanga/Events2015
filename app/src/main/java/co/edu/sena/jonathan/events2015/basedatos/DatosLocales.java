@@ -1,8 +1,17 @@
 package co.edu.sena.jonathan.events2015.basedatos;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import co.edu.sena.jonathan.events2015.R;
 
 /**
  * Created by CARMANU on 27/07/2015.
@@ -44,5 +53,61 @@ public class DatosLocales  {
 
     public DatosLocales(Context context) {
         this.context = context;
+    }
+
+    public void openBd(){
+        nHelper = new BdHelper(context);
+        nBd = nHelper.getWritableDatabase();
+
+        if(!hayRegistros()){
+            try {
+
+                InputStream stream = context.getResources().openRawResource(R.raw.events);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+                int count = 0;
+
+                String datos;
+                while ((datos = reader.readLine()) != null) {
+
+                    String[] datosSeparados = datos.split(";");
+                    if(count != 0){
+                        insertarDatos(datosSeparados);
+                    }
+                }
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public void closeBd(){
+        nHelper.close();
+    }
+
+    private void insertarDatos(String[] datosSeparados) {
+        ContentValues cv = new ContentValues();
+
+        cv.put(KEY_NAME, datosSeparados[1]);
+        cv.put(KEY_START_TIME,datosSeparados[2]);
+        cv.put(KEY_DAY, datosSeparados[3]);
+        cv.put(KEY_PARTICIPANTS, datosSeparados[4]);
+        cv.put(KEY_LOCATION, datosSeparados[5]);
+
+        nBd.insert(T_EVENTO, null, cv);
+    }
+
+    private boolean hayRegistros() {
+
+        Cursor c = nBd.rawQuery("select * from "+T_EVENTO, null);
+
+        if(c.moveToFirst()){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
