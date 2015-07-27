@@ -22,12 +22,12 @@ public class AdaptadorGrid extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return application.getListaColores().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return application.getListaColores().get(position);
     }
 
     @Override

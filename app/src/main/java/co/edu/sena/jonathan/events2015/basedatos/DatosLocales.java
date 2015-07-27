@@ -10,8 +10,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
+import co.edu.sena.jonathan.events2015.EventsApplication;
 import co.edu.sena.jonathan.events2015.R;
+import co.edu.sena.jonathan.events2015.data.EventoColorAma;
+import co.edu.sena.jonathan.events2015.data.EventoColorAzul;
+import co.edu.sena.jonathan.events2015.data.EventoColorRojo;
+import co.edu.sena.jonathan.events2015.data.EventoColorVerde;
+import co.edu.sena.jonathan.events2015.data.ItemColor;
 
 /**
  * Created by CARMANU on 27/07/2015.
@@ -33,6 +40,7 @@ public class DatosLocales  {
     private Context context;
     private SQLiteDatabase nBd;
     private BdHelper nHelper;
+    private EventsApplication application;
 
     private class BdHelper extends SQLiteOpenHelper{
 
@@ -56,6 +64,7 @@ public class DatosLocales  {
 
     public DatosLocales(Context context) {
         this.context = context;
+        application = (EventsApplication) context;
     }
 
     public void openBd(){
@@ -125,5 +134,50 @@ public class DatosLocales  {
         }else {
             return false;
         }
+    }
+
+    public void cargarDias(){
+        ArrayList<ItemColor> listaColores= new ArrayList<ItemColor>();
+
+        Cursor c = nBd.rawQuery("select " + KEY_DAY + " from " + T_EVENTO + " group by " + KEY_DAY, null);
+
+        int count = 1;
+
+        for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
+
+            switch (count){
+
+                case 1:
+                    count++;
+                    EventoColorAzul eventoAzul = new EventoColorAzul();
+                    eventoAzul.setName(c.getString(0));
+                    listaColores.add(eventoAzul);
+                    break;
+
+                case 2:
+                    count++;
+                    EventoColorVerde eventoVerde = new EventoColorVerde();
+                    eventoVerde.setName(c.getString(0));
+                    listaColores.add(eventoVerde);
+                    break;
+
+                case 3:
+                    count++;
+                    EventoColorRojo eventoRojo = new EventoColorRojo();
+                    eventoRojo.setName(c.getString(0));
+                    listaColores.add(eventoRojo);
+                    break;
+
+                case 4:
+                    count = 1;
+                    EventoColorAma eventoAma = new EventoColorAma();
+                    eventoAma.setName(c.getString(0));
+                    listaColores.add(eventoAma);
+                    break;
+
+            }
+        }
+
+        application.setListaColores(listaColores);
     }
 }
