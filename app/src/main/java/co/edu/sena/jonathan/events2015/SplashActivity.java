@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 public class SplashActivity extends Activity implements Runnable{
 
-    private final int TIME_THREAD=2500;
+    private final int TIME_THREAD=3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
