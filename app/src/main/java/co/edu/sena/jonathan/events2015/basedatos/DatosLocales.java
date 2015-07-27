@@ -53,6 +53,7 @@ public class DatosLocales  {
         }
     }
 
+
     public DatosLocales(Context context) {
         this.context = context;
     }
