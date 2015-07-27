@@ -27,6 +27,7 @@ public class DatosLocales  {
     public static final String KEY_DAY = "Day_";
     public static final String KEY_PARTICIPANTS = "Participants_";
     public static final String KEY_LOCATION = "Location_";
+    public static final String KEY_STATE = "State_";
 
     private Context context;
     private SQLiteDatabase nBd;
@@ -41,7 +42,7 @@ public class DatosLocales  {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TALBE " + T_EVENTO + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, " + KEY_START_TIME + " TEXT, " + KEY_DAY + " TEXT, " + KEY_PARTICIPANTS + " TEXT, " +
-            KEY_LOCATION + " TEXT);");
+            KEY_LOCATION + " TEXT, " + KEY_STATE + " INTEGER);");
         }
 
         @Override
@@ -96,6 +97,7 @@ public class DatosLocales  {
         cv.put(KEY_DAY, datosSeparados[3]);
         cv.put(KEY_PARTICIPANTS, datosSeparados[4]);
         cv.put(KEY_LOCATION, datosSeparados[5]);
+        cv.put(KEY_STATE, 0);
 
         nBd.insert(T_EVENTO, null, cv);
     }
