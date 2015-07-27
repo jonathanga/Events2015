@@ -8,4 +8,10 @@
     <string name="title_activity_lista_eventos_dia">ListaEventosDia</string>
     <string name="title_activity_detalle">DetalleActivity</string>
 
+    <string-array name="array_spinner_filtro">
+        <item>Descripcion del evento</item>
+        <item>Participantes</item>
+        <item>Lugar</item>
+    </string-array>
+
 </resources>

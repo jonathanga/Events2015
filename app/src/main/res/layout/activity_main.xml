@@ -10,12 +10,14 @@
         android:id="@+id/main_spin"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="0dp"></Spinner>
+        android:layout_height="0dp"
+        android:entries="@array/array_spinner_filtro"></Spinner>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
         <EditText
+            android:id="@+id/main_ed_filtro"
             android:layout_width="0dp"
             android:layout_weight="6"
             android:hint="palabra a buscar"
@@ -25,7 +27,9 @@
             android:id="@+id/main_btn_buscar"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="filtrarDatos"/>
     </LinearLayout>
     <GridView
         android:id="@+id/main_grid"
@@ -42,6 +46,7 @@
         android:id="@+id/main_btn_verTodos"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:onClick="verTodo"/>
 
 </LinearLayout>

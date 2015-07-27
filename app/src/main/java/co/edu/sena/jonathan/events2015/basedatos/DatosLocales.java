@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import co.edu.sena.jonathan.events2015.EventsApplication;
 import co.edu.sena.jonathan.events2015.R;
+import co.edu.sena.jonathan.events2015.data.Evento;
 import co.edu.sena.jonathan.events2015.data.EventoColorAma;
 import co.edu.sena.jonathan.events2015.data.EventoColorAzul;
 import co.edu.sena.jonathan.events2015.data.EventoColorRojo;
@@ -22,7 +23,7 @@ import co.edu.sena.jonathan.events2015.data.EventoColorVerde;
 import co.edu.sena.jonathan.events2015.data.ItemColor;
 
 /**
- * Created by CARMANU on 27/07/2015.
+ * Created by Carmanu on 27/07/2015.
  */
 public class DatosLocales  {
 
@@ -46,7 +47,7 @@ public class DatosLocales  {
     private class BdHelper extends SQLiteOpenHelper{
 
         public BdHelper(Context context) {
-            super(context, BD_NAME, null, 2);
+            super(context, BD_NAME, null, 3);
         }
 
         @Override
@@ -90,6 +91,7 @@ public class DatosLocales  {
                         if(nuevoEncabezado.equals(encabezado)){
                             insertarDatos(datosSeparados,0);
                         }else {
+                            encabezado = nuevoEncabezado;
                             insertarDatos(datosSeparados, 1);
                         }
                     }
@@ -144,6 +146,7 @@ public class DatosLocales  {
 
     public void cargarDias(){
         ArrayList<ItemColor> listaColores= new ArrayList<ItemColor>();
+        ArrayList<String> listaDias= new ArrayList<String>();
 
         Cursor c = nBd.rawQuery("select " + KEY_DAY + " from " + T_EVENTO + " group by " + KEY_DAY, null);
 
@@ -158,6 +161,7 @@ public class DatosLocales  {
                     EventoColorAzul eventoAzul = new EventoColorAzul();
                     eventoAzul.setName(c.getString(0));
                     listaColores.add(eventoAzul);
+                    listaDias.add(c.getString(0));
                     break;
 
                 case 2:
@@ -165,6 +169,7 @@ public class DatosLocales  {
                     EventoColorVerde eventoVerde = new EventoColorVerde();
                     eventoVerde.setName(c.getString(0));
                     listaColores.add(eventoVerde);
+                    listaDias.add(c.getString(0));
                     break;
 
                 case 3:
@@ -172,6 +177,7 @@ public class DatosLocales  {
                     EventoColorRojo eventoRojo = new EventoColorRojo();
                     eventoRojo.setName(c.getString(0));
                     listaColores.add(eventoRojo);
+                    listaDias.add(c.getString(0));
                     break;
 
                 case 4:
@@ -179,11 +185,54 @@ public class DatosLocales  {
                     EventoColorAma eventoAma = new EventoColorAma();
                     eventoAma.setName(c.getString(0));
                     listaColores.add(eventoAma);
+                    listaDias.add(c.getString(0));
                     break;
 
             }
         }
 
         application.setListaColores(listaColores);
+        application.setListaDias(listaDias);
     }
+
+    // Tipo = 0; seleccionaTodo
+    // Tipo = 1; Filtro Spinner
+    // Tipo = 2; Filtro GridView
+    public void cargarListaEventos(int tipo, String criterio, String dato) {
+
+        ArrayList<Evento> listaEventos = new ArrayList<Evento>();
+
+        Cursor c = null;
+        switch (tipo) {
+            case 0:
+                c = nBd.rawQuery("select * from " + T_EVENTO, null);
+                break;
+            case 1:
+                c = nBd.rawQuery("select * from " + T_EVENTO + " where " + criterio + " like '%" + dato + "%'", null);
+                break;
+            case 2:
+                c = nBd.rawQuery("select * from " + T_EVENTO  + " where " + criterio + " = '" + dato + "'", null);
+                break;
+        }
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+
+            Evento evento = new Evento();
+
+            evento.setId(c.getInt(0));
+            evento.setNombre(c.getString(1));
+            evento.setStart_time(c.getString(2));
+            evento.setDia(c.getString(3));
+            evento.setParticipantes(c.getString(4));
+            evento.setUbiacion(c.getString(5));
+            evento.setEstado(c.getInt(6));
+            evento.setEncabesado(c.getInt(7));
+
+            listaEventos.add(evento);
+        }
+
+        application.setListaEventos(listaEventos);
+    }
+
+
 }

@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/detalle_txt_dia"
             android:text="C3"
             android:textSize="45sp"
             android:gravity="center"
@@ -29,23 +30,27 @@
              android:text="Nombre del evento"
              android:textSize="25sp"
              android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
+             android:layout_height="wrap_content"
+             android:id="@+id/detalle_txt_nombre" />
             <TextView
                 android:text="Descripción del evento"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/detalle_txt_descrip" />
             <TextView
                 android:text="Lugar del evento"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/detalle_txt_lugar" />
             <TextView
                 android:text="Hora del evento"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:id="@+id/detalle_txt_hora" />
         </LinearLayout>
     </ScrollView>
     <Button
@@ -53,7 +58,8 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:id="@+id/detalle_bt_agendar" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -14,7 +14,16 @@ import co.edu.sena.jonathan.events2015.data.ItemColor;
 public class EventsApplication extends Application {
 
     private ArrayList<ItemColor> listaColores;
+    private ArrayList<String> listaDias;
     private ArrayList<Evento> listaEventos;
+
+    public ArrayList<String> getListaDias() {
+        return listaDias;
+    }
+
+    public void setListaDias(ArrayList<String> listaDias) {
+        this.listaDias = listaDias;
+    }
 
     public ArrayList<ItemColor> getListaColores() {
         return listaColores;
