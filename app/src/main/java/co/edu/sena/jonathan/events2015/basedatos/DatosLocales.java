@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -92,6 +93,7 @@ public class DatosLocales  {
                             insertarDatos(datosSeparados, 1);
                         }
                     }
+                    count++;
                 }
 
             } catch (IOException e) {
@@ -113,7 +115,11 @@ public class DatosLocales  {
         cv.put(KEY_START_TIME,datosSeparados[2]);
         cv.put(KEY_DAY, datosSeparados[3]);
         cv.put(KEY_PARTICIPANTS, datosSeparados[4]);
-        cv.put(KEY_LOCATION, datosSeparados[5]);
+        try {
+            cv.put(KEY_LOCATION, datosSeparados[5]);
+        }catch (Exception e){
+            Log.e("NO HAY DESCRIPTION ::_ " , e.toString());
+        }
 
         // 0 No esta agendado
         // 1 Si esta agendado

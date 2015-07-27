@@ -2,6 +2,7 @@ package co.edu.sena.jonathan.events2015;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
             adaptadorGrid = new AdaptadorGrid(getApplicationContext());
             init();
         }catch(Exception e){
-            e.printStackTrace();
+            Log.e("Error:::_ ", e.toString());
         }
     }
 
@@ -41,6 +42,7 @@ public class MainActivity extends Activity {
     private void init() {
 
         gridDias = (GridView) findViewById(R.id.main_grid);
+        gridDias.setAdapter(adaptadorGrid);
 
     }
 }

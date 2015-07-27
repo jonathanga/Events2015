@@ -47,7 +47,7 @@ public class AdaptadorGrid extends BaseAdapter {
 
         View v;
 
-        if(convertView != null){
+        if(convertView == null){
             v = View.inflate(context, R.layout.item_grid, null);
         }else{
             v = convertView;
