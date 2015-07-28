@@ -31,4 +31,5 @@ public class DetalleActivity extends Activity {
         people.identify("usuarioWS"+application.getListaEventos().get(0).getNombre());
         people.initPushHandling("214490295855");
     }
+
 }
