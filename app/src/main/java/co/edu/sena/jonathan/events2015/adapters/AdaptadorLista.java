@@ -20,8 +20,7 @@ public class AdaptadorLista extends BaseAdapter{
 
     public AdaptadorLista(Context context) {
         this.context = context;
-        this.application = (EventsApplication) context;
-    }
+        this.application = (EventsApplication) context;}
 
     @Override
     public int getCount() {
