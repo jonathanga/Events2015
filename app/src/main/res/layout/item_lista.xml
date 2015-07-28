@@ -8,17 +8,13 @@
         android:id="@+id/itemLista_dia"
         android:text="1"
         android:gravity="center"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_margin="2dp"
-        android:background="@drawable/round_button_day"
         android:layout_height="match_parent" />
     <LinearLayout
-        android:id="@+id/item_linear"
         android:layout_width="0dp"
         android:layout_weight="4"
-        android:padding="2dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
@@ -26,19 +22,15 @@
             android:text="Nombre Evento"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:lines="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/itemLista_participa"
             android:textSize="18sp"
             android:text="Participantes"
-            android:background="@drawable/rectangle_item_list"
             android:layout_alignParentBottom="true"
-            android:lines="1"
             android:layout_centerHorizontal="true"
-            android:layout_width="match_parent"
-            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <ImageView

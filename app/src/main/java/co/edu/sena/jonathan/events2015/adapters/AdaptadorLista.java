@@ -1,17 +1,12 @@
 package co.edu.sena.jonathan.events2015.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import co.edu.sena.jonathan.events2015.DetalleActivity;
 import co.edu.sena.jonathan.events2015.EventsApplication;
 import co.edu.sena.jonathan.events2015.R;
 
@@ -48,7 +43,6 @@ public class AdaptadorLista extends BaseAdapter{
         TextView txtDia;
         TextView txtParticipantes;
         ImageView imgIr;
-        LinearLayout linearLayout;
     }
 
     @Override
@@ -62,7 +56,6 @@ public class AdaptadorLista extends BaseAdapter{
             holder.txtDia= (TextView) v.findViewById(R.id.itemLista_dia);
             holder.txtParticipantes= (TextView) v.findViewById(R.id.itemLista_participa);
             holder.imgIr= (ImageView) v.findViewById(R.id.itemLista_img);
-            holder.linearLayout= (LinearLayout) v.findViewById(R.id.item_linear);
 
             v.setTag(holder);
         }else{
@@ -79,31 +72,11 @@ public class AdaptadorLista extends BaseAdapter{
             holder.imgIr.setImageResource(R.drawable.logo_estd_0);
         }
 
-        if (application.getListaEventos().get(i).getEncabesado()==1){
-            holder.linearLayout.setBackgroundResource(R.color.fondo_lista_azul);
-            holder.txtNombre.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.txtParticipantes.setTextColor(Color.parseColor("#FFFFFF"));
+        if (application.getListaEventos().get(i).getEncabesado()==0){
+            v.setBackgroundResource(R.color.fondo_lista_azul);
         }else{
-            holder.linearLayout.setBackgroundResource(R.color.fondo_lista_blanco);
-            holder.txtNombre.setTextColor(Color.parseColor("#000000"));
-            holder.txtParticipantes.setTextColor(Color.parseColor("#000000"));
+            v.setBackgroundResource(R.color.fondo_lista_blanco);
         }
-
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(context, DetalleActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
-        });
-
-        holder.imgIr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"click img",Toast.LENGTH_SHORT).show();
-            }
-        });
 
         return v;
     }
