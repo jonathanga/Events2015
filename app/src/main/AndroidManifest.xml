@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.edu.sena.jonathan.events2015" >
 
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.write_calendar" />
+
+    <permission android:name="co.sena.wsaevents.permission.C2D_MESSAGE" android:protectionLevel="signature"></permission>
+    <uses-permission android:name="co.sena.wsaevents.permission.C2D_MESSAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECIVE"></uses-permission>
+    <uses-permission android:name="ANDROID.PERMISSION.WAKE_LOCK"></uses-permission>
+
     <application
         android:name=".EventsApplication"
         android:allowBackup="true"
@@ -29,6 +40,15 @@
             android:name=".DetalleActivity"
             android:label="@string/title_activity_detalle" >
         </activity>
+
+        <receiver android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" android:icon="@drawable/ic_launcher">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"></action>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"></action>
+                <category android:name="co.sena.wsaevents"></category>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
