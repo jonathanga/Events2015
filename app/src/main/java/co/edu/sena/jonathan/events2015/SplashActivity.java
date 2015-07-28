@@ -29,5 +29,6 @@ public class SplashActivity extends Activity implements Runnable{
         }
         Intent i=new Intent(SplashActivity.this,MainActivity.class);
         startActivity(i);
+        finish();
     }
 }

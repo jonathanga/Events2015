@@ -5,6 +5,7 @@
     android:gravity="center">
 
     <TextView
+        android:textColor="@color/color_verde"
         android:id="@+id/itemLista_dia"
         android:text="1"
         android:gravity="center"
@@ -23,7 +24,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_azul"/>
         <TextView
             android:id="@+id/itemLista_participa"
             android:textSize="18sp"
@@ -31,11 +33,12 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_verde"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/itemLista_img"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/sin_agendar"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="50dp" />

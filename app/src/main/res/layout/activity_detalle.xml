@@ -4,7 +4,7 @@
     tools:context="co.edu.sena.jonathan.events2015.DetalleActivity">
 
     <ImageView
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/logo_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <LinearLayout
@@ -25,26 +25,33 @@
             android:textSize="45sp"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/color_ama"
+            android:textColor="@android:color/white"/>
          <TextView
+             android:layout_marginTop="5dp"
+             android:layout_margin="5dp"
              android:text="Nombre del evento"
              android:textSize="25sp"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:id="@+id/detalle_txt_nombre" />
             <TextView
+                android:layout_margin="5dp"
                 android:text="Descripción del evento"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/detalle_txt_descrip" />
             <TextView
+                android:layout_margin="5dp"
                 android:text="Lugar del evento"
                 android:textSize="25sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/detalle_txt_lugar" />
             <TextView
+                android:layout_margin="5dp"
                 android:text="Hora del evento"
                 android:textSize="25sp"
                 android:gravity="center"
@@ -59,7 +66,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/detalle_bt_agendar" />
+        android:id="@+id/detalle_bt_agendar"
+        android:textColor="@android:color/white"
+        android:background="@color/color_verde"
+        android:textSize="35sp"/>
     </LinearLayout>
 
 </RelativeLayout>

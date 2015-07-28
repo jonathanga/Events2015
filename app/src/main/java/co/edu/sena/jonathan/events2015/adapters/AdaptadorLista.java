@@ -67,15 +67,15 @@ public class AdaptadorLista extends BaseAdapter{
         holder.txtDia.setText(application.getListaEventos().get(i).getDia());
 
         if (application.getListaEventos().get(i).getEstado()==1){
-            holder.imgIr.setImageResource(R.drawable.logo_estd_1);
+            holder.imgIr.setImageResource(R.drawable.agendado);
         }else {
-            holder.imgIr.setImageResource(R.drawable.logo_estd_0);
+            holder.imgIr.setImageResource(R.drawable.sin_agendar);
         }
 
         if (application.getListaEventos().get(i).getEncabesado()==0){
-            v.setBackgroundResource(R.color.fondo_lista_azul);
-        }else{
             v.setBackgroundResource(R.color.fondo_lista_blanco);
+        }else{
+            v.setBackgroundResource(R.color.color_ama);
         }
 
         return v;
