@@ -2,15 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.edu.sena.jonathan.events2015" >
 
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.write_calendar" />
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.write_calendar"/>
 
     <permission android:name="co.edu.sena.jonathan.events2015.permission.C2D_MESSAGE" android:protectionLevel="signature"></permission>
     <uses-permission android:name="co.edu.sena.jonathan.events2015.permission.C2D_MESSAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
 
     <application
@@ -23,22 +23,22 @@
             android:name=".SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_splash" >
+            android:label="@string/title_activity_splash">
         </activity>
         <activity
             android:name=".ListaEventosDia"
-            android:label="@string/title_activity_lista_eventos_dia" >
+            android:label="@string/title_activity_lista_eventos_dia">
         </activity>
         <activity
             android:name=".DetalleActivity"
-            android:label="@string/title_activity_detalle" >
+            android:label="@string/title_activity_detalle">
         </activity>
 
         <receiver android:name="com.mixpanel.android.mpmetrics.GCMReceiver"
